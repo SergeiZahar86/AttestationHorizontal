@@ -61,6 +61,7 @@
     <Compile Include="AttestationPage.xaml.cs">
       <DependentUpon>AttestationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="ReportPage.xaml.cs">
       <DependentUpon>ReportPage.xaml</DependentUpon>
     </Compile>
@@ -68,6 +69,10 @@
       <DependentUpon>DialogLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="RowTab.cs" />
+    <Compile Include="ShowPhotos.xaml.cs">
+      <DependentUpon>ShowPhotos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoData.cs" />
     <Page Include="AttestationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DialogLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowPhotos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,7 +129,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\pexels-mark-plötz-2790396.jpg" />
+    <Resource Include="Resources\pexels-pixabay-258455.jpg" />
+    <Resource Include="Resources\pexels-sergio-souza-3197995.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
