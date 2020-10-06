@@ -20,14 +20,17 @@ namespace Attestation
     public partial class ShowPhotos : Window
     {
         private Global global;
-        private int idx;
-        private List<RowTab> DATA;
+        public int idx;
+        public List<RowTab> DATA;
+
+
         public ShowPhotos()
         {
             InitializeComponent();
             global = Global.getInstance();
             idx = global.Idx;
             DATA = global.DATA;
+            //image1.Source = DATA[idx].LeftFoto;
         }
 
 

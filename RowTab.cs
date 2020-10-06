@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Drawing;
 
 namespace Attestation
 {
     public class RowTab
     {
         public RowTab(int Id, bool isOk, String VagNum, float Tara, float TaraNSI,
-            float TaraDelta, Image LeftFoto, Image RightFoto, Image TopFoto)
+            float TaraDelta, System.Drawing.Image LeftFoto, System.Drawing.Image RightFoto, System.Drawing.Image TopFoto)
         {
             this.Id = Id;
             this.isOk = isOk;
@@ -30,9 +31,9 @@ namespace Attestation
         public float TaraNSI { get; set; }
         public float TaraDelta { get; set; }
         public String Video { get; set; }
-        public Image LeftFoto { get; set; }
-        public Image RightFoto { get; set; }
-        public Image TopFoto { get; set; }
+        public System.Drawing.Image LeftFoto { get; set; }
+        public System.Drawing.Image RightFoto { get; set; }
+        public System.Drawing.Image TopFoto { get; set; }
     }
 }
 

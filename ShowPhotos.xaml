@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="ShowPhotos" Height="400" Width="1500">
     <Grid>
-        <MediaElement Grid.Row="0" Grid.Column="0" Height="370" Width="480"/>
-        <MediaElement Grid.Row="0" Grid.Column="1" Height="370" Width="480"/>
-        <MediaElement Grid.Row="0" Grid.Column="2" Height="370" Width="480"/>
+        <Image x:Name="image1" Grid.Row="0" Grid.Column="0" Height="370" Width="480"/>
+        <Image x:Name="image2" Grid.Row="0" Grid.Column="1" Height="370" Width="480"/>
+        <Image x:Name="image3" Grid.Row="0" Grid.Column="2" Height="370" Width="480"/>
         <Button Grid.Column="1" Grid.Row="1" Height="40" Width="70" Content="OK" FontSize="18" Click="close_ShowPhotos" />
         <Grid.RowDefinitions>
             <RowDefinition/>

@@ -13,14 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
+using iTextSharp.text;
+using System.Drawing.Imaging;
 
 namespace Attestation
 {
-    /// <summary>
-    /// Логика взаимодействия для AttestationPage.xaml
-    /// </summary>
     public partial class AttestationPage : Page
     {
+        System.Drawing.Image leftFoto;
+        System.Drawing.Image rightFoto;
+        System.Drawing.Image topFoto;
+        String image1FromRowTab;
+        String image2FromRowTab;
+        String image3FromRowTab;
+
         public int idx; // индекс строки
         private Global global;
 
@@ -28,51 +35,52 @@ namespace Attestation
         {
             InitializeComponent();
             global = Global.getInstance();
+            image1FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap1.bmp";
+            image2FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap2.bmp";
+            image3FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap3.bmp";
         }
 
         private void DataGridMain_Loaded(object sender, RoutedEventArgs e)
         {
-            //List<RowTab> result = new List<RowTab>();
             global.DATA.Clear();
-
-            Image leftFoto;
-            Image rightFoto;
-            Image topFoto;
-            
             for(int i=0; i < 26; i++) {
                 bool c = false;
-
                 leftFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-mark-plötz-2790396.jpg");
                 rightFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-pixabay-258455.jpg");
                 topFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-sergio-souza-3197995.jpg");
-                
                 if (i % 2 == 0)
                 {
                     c = true;
                     leftFoto = null;
                     rightFoto = null;
                     topFoto = null;
-
                 }
                 global.DATA.Add(new RowTab(i+1, c, (88345634+i).ToString() ,(float)(i+0.5),
-                    (float)(i + 1.5), (float)(i + 2.5), (Image)leftFoto, (Image)rightFoto, (Image)topFoto ));
+                    (float)(i + 1.5), (float)(i + 2.5), (System.Drawing.Image)leftFoto, 
+                    (System.Drawing.Image)rightFoto, (System.Drawing.Image)topFoto ));
             }
             DataGridMain.ItemsSource = global.DATA;
-
-            
         }
-        Image getImage(String im)
+        System.Drawing.Image getImage(String im)
         {
-            Image image = new Image();
+            System.Drawing.Image image = System.Drawing.Image.FromFile(im);
+            /*
             image.Width = 300;
             BitmapImage logo = new BitmapImage();
             logo.BeginInit();
             logo.UriSource = new Uri(im);
             logo.EndInit();
             image.Source = logo;
-            return image;
+            */
+            var ms = new MemoryStream();
+            image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            var bytes = ms.ToArray();
+            var imageMemoryStream = new MemoryStream(bytes);
+            System.Drawing.Image imgFromStream = System.Drawing.Image.FromStream(imageMemoryStream);
+            return imgFromStream;
 
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -91,15 +99,20 @@ namespace Attestation
             if(row.LeftFoto != null & row.RightFoto != null & row.TopFoto != null)
             {
                 ShowPhotos showPhotos = new ShowPhotos();
+                //showPhotos.image1. = row.LeftFoto;
+                row.LeftFoto.Save(image1FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
+                row.RightFoto.Save(image2FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
+                row.TopFoto.Save(image3FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
+                showPhotos.image1.Source = new BitmapImage(new Uri(image1FromRowTab));
+                showPhotos.image2.Source = new BitmapImage(new Uri(image2FromRowTab));
+                showPhotos.image3.Source = new BitmapImage(new Uri(image3FromRowTab));
                 showPhotos.ShowDialog();
             }
             else
             {
-                System.Windows.MessageBox.Show("У строки {row.Id.ToString()} нет фотографий");
+                System.Windows.MessageBox.Show("У строки " + row.Id.ToString() + " нет фотографий");
             }
-
         }
-
         private void button_add_Click(object sender, RoutedEventArgs e)
         {
             /*
