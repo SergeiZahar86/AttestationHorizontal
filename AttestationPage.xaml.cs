@@ -24,22 +24,19 @@ namespace Attestation
         System.Drawing.Image leftFoto;
         System.Drawing.Image rightFoto;
         System.Drawing.Image topFoto;
-        public string Image1FromRowTab { set; get; }
-        public string Image2FromRowTab { set; get; }
-        public string Image3FromRowTab { set; get; }
-
+        //public string Image1FromRowTab { set; get; }
+        //public string Image2FromRowTab { set; get; }
+        //public string Image3FromRowTab { set; get; }
         public int idx; // индекс строки
         private Global global;
-
         public AttestationPage()
         {
             InitializeComponent();
             global = Global.getInstance();
-            Image1FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap1.bmp";
-            Image2FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap2.bmp";
-            Image3FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap3.bmp";
+            //Image1FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap1.bmp";
+            //Image2FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap2.bmp";
+            //Image3FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap3.bmp";
         }
-
         private void DataGridMain_Loaded(object sender, RoutedEventArgs e)
         {
             global.DATA.Clear();
@@ -64,14 +61,6 @@ namespace Attestation
         System.Drawing.Image getImage(String im)
         {
             System.Drawing.Image image = System.Drawing.Image.FromFile(im);
-            /*
-            image.Width = 300;
-            BitmapImage logo = new BitmapImage();
-            logo.BeginInit();
-            logo.UriSource = new Uri(im);
-            logo.EndInit();
-            image.Source = logo;
-            */
             var ms = new MemoryStream();
             image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             var bytes = ms.ToArray();
@@ -80,14 +69,14 @@ namespace Attestation
             return imgFromStream;
 
         }
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            /* 
+            * Удаление строки из DataGrid 
+            */
             /*
             RowTab row = (RowTab)DataGridMain.SelectedItem;
             int idx = DataGridMain.SelectedIndex;
-
             System.Windows.MessageBox.Show(row.Id.ToString());
             //DataGridMain.Items.RemoveAt(DataGridMain.SelectedIndex);
             this.DATA.RemoveAt(idx);
@@ -99,18 +88,44 @@ namespace Attestation
             if(row.LeftFoto != null & row.RightFoto != null & row.TopFoto != null)
             {
                 ShowPhotos showPhotos = new ShowPhotos();
+                /*
                 //showPhotos.image1. = row.LeftFoto;
-                row.LeftFoto.Save(Image1FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
+                row.LeftFoto.Save(Image1FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg); // запись в файл
                 row.RightFoto.Save(Image2FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
                 row.TopFoto.Save(Image3FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
-                showPhotos.image1.Source = new BitmapImage(new Uri(Image1FromRowTab));
+                showPhotos.image1.Source = new BitmapImage(new Uri(Image1FromRowTab)); // передача из файла в элемент Image
                 showPhotos.image2.Source = new BitmapImage(new Uri(Image2FromRowTab));
                 showPhotos.image3.Source = new BitmapImage(new Uri(Image3FromRowTab));
+                */
+                byte[] bytes1 = ImageToByteArray(row.LeftFoto);
+                byte[] bytes2 = ImageToByteArray(row.RightFoto);
+                byte[] bytes3 = ImageToByteArray(row.TopFoto);
+                showPhotos.image1.Source = ByteArraytoBitmap(bytes1);
+                showPhotos.image2.Source = ByteArraytoBitmap(bytes2);
+                showPhotos.image3.Source = ByteArraytoBitmap(bytes3);
                 showPhotos.ShowDialog();
             }
             else
             {
                 System.Windows.MessageBox.Show("У строки " + row.Id.ToString() + " нет фотографий");
+                
+            }
+        }
+        public static BitmapImage ByteArraytoBitmap(Byte[] byteArray)
+        {
+            MemoryStream stream = new MemoryStream(byteArray);
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = stream;
+            bitmapImage.EndInit();
+            return bitmapImage;
+        }
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
             }
         }
         private void button_add_Click(object sender, RoutedEventArgs e)
