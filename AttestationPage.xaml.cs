@@ -21,9 +21,12 @@ namespace Attestation
 {
     public partial class AttestationPage : Page
     {
-        System.Drawing.Image leftFoto;
-        System.Drawing.Image rightFoto;
-        System.Drawing.Image topFoto;
+        //System.Drawing.Image leftFoto;
+        //System.Drawing.Image rightFoto;
+        //System.Drawing.Image topFoto;
+        byte[] leftFoto;
+        byte[] rightFoto;
+        byte[] topFoto;
         //public string Image1FromRowTab { set; get; }
         //public string Image2FromRowTab { set; get; }
         //public string Image3FromRowTab { set; get; }
@@ -36,15 +39,24 @@ namespace Attestation
             //Image1FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap1.bmp";
             //Image2FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap2.bmp";
             //Image3FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap3.bmp";
+
+
         }
         private void DataGridMain_Loaded(object sender, RoutedEventArgs e)
         {
             global.DATA.Clear();
             for(int i=0; i < 26; i++) {
                 bool c = false;
+                /*
                 leftFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-mark-plötz-2790396.jpg");
                 rightFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-pixabay-258455.jpg");
                 topFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-sergio-souza-3197995.jpg");
+                */
+
+                leftFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Projects/АРМ_ОТК/Resources/pexels-mark-plötz-2790396.jpg"));
+                rightFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Projects/АРМ_ОТК/Resources/pexels-pixabay-258455.jpg"));
+                topFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Projects/АРМ_ОТК/Resources/pexels-sergio-souza-3197995.jpg"));
+
                 if (i % 2 == 0)
                 {
                     c = true;
@@ -53,8 +65,14 @@ namespace Attestation
                     topFoto = null;
                 }
                 global.DATA.Add(new RowTab(i+1, c, (88345634+i).ToString() ,(float)(i+0.5),
-                    (float)(i + 1.5), (float)(i + 2.5), (System.Drawing.Image)leftFoto, 
-                    (System.Drawing.Image)rightFoto, (System.Drawing.Image)topFoto ));
+                    (float)(i + 1.5), (float)(i + 2.5), leftFoto, 
+                    rightFoto, topFoto ));
+
+                /*
+                global.DATA.Add(new RowTab(i + 1, c, (88345634 + i).ToString(), (float)(i + 0.5),
+                    (float)(i + 1.5), (float)(i + 2.5), (System.Drawing.Image)leftFoto,
+                    (System.Drawing.Image)rightFoto, (System.Drawing.Image)topFoto));
+                */
             }
             DataGridMain.ItemsSource = global.DATA;
         }
@@ -97,12 +115,21 @@ namespace Attestation
                 showPhotos.image2.Source = new BitmapImage(new Uri(Image2FromRowTab));
                 showPhotos.image3.Source = new BitmapImage(new Uri(Image3FromRowTab));
                 */
+
+
+                /*
                 byte[] bytes1 = ImageToByteArray(row.LeftFoto);
                 byte[] bytes2 = ImageToByteArray(row.RightFoto);
                 byte[] bytes3 = ImageToByteArray(row.TopFoto);
                 showPhotos.image1.Source = ByteArraytoBitmap(bytes1);
                 showPhotos.image2.Source = ByteArraytoBitmap(bytes2);
                 showPhotos.image3.Source = ByteArraytoBitmap(bytes3);
+                */
+                showPhotos.image1.Source = ByteArraytoBitmap(leftFoto);
+                showPhotos.image2.Source = ByteArraytoBitmap(rightFoto);
+                showPhotos.image3.Source = ByteArraytoBitmap(topFoto);
+
+
                 showPhotos.ShowDialog();
             }
             else

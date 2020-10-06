@@ -11,7 +11,12 @@ namespace Attestation
     public class RowTab
     {
         public RowTab(int Id, bool isOk, string VagNum, float Tara, float TaraNSI,
+            float TaraDelta, byte[] LeftFoto, byte[] RightFoto, byte[] TopFoto)
+
+            /*
+            public RowTab(int Id, bool isOk, string VagNum, float Tara, float TaraNSI,
             float TaraDelta, System.Drawing.Image LeftFoto, System.Drawing.Image RightFoto, System.Drawing.Image TopFoto)
+            */
         {
             this.Id = Id;
             this.isOk = isOk;
@@ -31,9 +36,14 @@ namespace Attestation
         public float TaraNSI { get; set; }
         public float TaraDelta { get; set; }
         public string Video { get; set; }
+        /*
         public System.Drawing.Image LeftFoto { get; set; }
         public System.Drawing.Image RightFoto { get; set; }
         public System.Drawing.Image TopFoto { get; set; }
+        */
+        public byte[] LeftFoto { get; set; }
+        public byte[] RightFoto { get; set; }
+        public byte[] TopFoto { get; set; }
     }
 }
 
