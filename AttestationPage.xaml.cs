@@ -24,9 +24,9 @@ namespace Attestation
         System.Drawing.Image leftFoto;
         System.Drawing.Image rightFoto;
         System.Drawing.Image topFoto;
-        String image1FromRowTab;
-        String image2FromRowTab;
-        String image3FromRowTab;
+        public string Image1FromRowTab { set; get; }
+        public string Image2FromRowTab { set; get; }
+        public string Image3FromRowTab { set; get; }
 
         public int idx; // индекс строки
         private Global global;
@@ -35,9 +35,9 @@ namespace Attestation
         {
             InitializeComponent();
             global = Global.getInstance();
-            image1FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap1.bmp";
-            image2FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap2.bmp";
-            image3FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap3.bmp";
+            Image1FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap1.bmp";
+            Image2FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap2.bmp";
+            Image3FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap3.bmp";
         }
 
         private void DataGridMain_Loaded(object sender, RoutedEventArgs e)
@@ -100,12 +100,12 @@ namespace Attestation
             {
                 ShowPhotos showPhotos = new ShowPhotos();
                 //showPhotos.image1. = row.LeftFoto;
-                row.LeftFoto.Save(image1FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
-                row.RightFoto.Save(image2FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
-                row.TopFoto.Save(image3FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
-                showPhotos.image1.Source = new BitmapImage(new Uri(image1FromRowTab));
-                showPhotos.image2.Source = new BitmapImage(new Uri(image2FromRowTab));
-                showPhotos.image3.Source = new BitmapImage(new Uri(image3FromRowTab));
+                row.LeftFoto.Save(Image1FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
+                row.RightFoto.Save(Image2FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
+                row.TopFoto.Save(Image3FromRowTab, System.Drawing.Imaging.ImageFormat.Jpeg);
+                showPhotos.image1.Source = new BitmapImage(new Uri(Image1FromRowTab));
+                showPhotos.image2.Source = new BitmapImage(new Uri(Image2FromRowTab));
+                showPhotos.image3.Source = new BitmapImage(new Uri(Image3FromRowTab));
                 showPhotos.ShowDialog();
             }
             else
