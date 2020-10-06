@@ -136,5 +136,10 @@ namespace Attestation
             DataGridMain.ItemsSource = this.DATA;
             */
         }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
