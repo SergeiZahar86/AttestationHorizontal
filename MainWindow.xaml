@@ -41,7 +41,7 @@
 
             <!--  .............................. Кнопки панели управления .........................................-->
             <Button x:Name="CloseButton" fa:Awesome.Content="SignOut"  Click="CloseButton_Click"   DockPanel.Dock="Right"
-                    Style="{StaticResource RedButton}"  Width="30" ToolTip="Выход"/>
+                    Style="{StaticResource RedButton}"  Width="30" ToolTip="Выход" IsCancel="True"/>
             <Button x:Name="MinButton"   fa:Awesome.Content="ArrowsAlt"  Click="MinButton_Click"  DockPanel.Dock="Right"
                     Style="{StaticResource RedButton}"   Width="30" ToolTip="Сворачивание окна"/>
             <Button x:Name="LoginButton"   Click="LoginButton_Click"  DockPanel.Dock="Right" Style="{StaticResource RedButton}"
@@ -56,19 +56,19 @@
             <TextBlock HorizontalAlignment="Right" Foreground="#DC0000" FontFamily="Impact"  FontSize="24" Margin="4,4,15,4" Text="Indas Cube"/>
 
             <!--  .............................  Меню ....................................................................-->
-            <Border BorderThickness="0 0 0 6" BorderBrush="#CC0000" x:Name="BorderAttestation">
+            <Border BorderThickness="0 0 0 6" BorderBrush="#CC0000" x:Name="BorderAttestation" Cursor="Hand">
                 <TextBlock HorizontalAlignment="Left" Foreground="White"  PreviewMouseDown="Attestation_Click"
                            FontFamily="Calibry" FontSize="16" Margin="30,10,15,4">Аттестация</TextBlock>
             </Border>
-            <Border BorderThickness="0 0 0 6" BorderBrush="#37474F" x:Name="BorderReport">
+            <Border BorderThickness="0 0 0 6" BorderBrush="#37474F" x:Name="BorderReport" Cursor="Hand">
                 <TextBlock HorizontalAlignment="Left" Foreground="White" PreviewMouseDown="Report_Click" FontFamily="Calibry"
                            FontSize="16" Margin="4,10,15,4">Отчеты</TextBlock>
             </Border>
             <DockPanel HorizontalAlignment="right">
                 <TextBlock HorizontalAlignment="Right" Foreground="White" FontFamily="Calibry" FontSize="16"
-                           Margin="4,10,15,4">Аттестация вагонов</TextBlock>
+                           Margin="4,10,15,4" Cursor="Hand">Аттестация вагонов</TextBlock>
                 <TextBlock  x:Name="user" HorizontalAlignment="Right" Foreground="White" FontFamily="Calibry"
-                            FontSize="16" Margin="4,10,15,4">admin</TextBlock>
+                            FontSize="16" Margin="4,10,15,4" Cursor="Hand">admin</TextBlock>
             </DockPanel>
         </DockPanel>
         <Border Background="#EEEEEE">

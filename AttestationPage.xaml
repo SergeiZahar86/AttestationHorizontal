@@ -210,8 +210,6 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="button_add" Grid.Row="1" Width="50" Height="50" HorizontalAlignment="Left" Click="button_add_Click"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="100"/>
     </Grid>
 
 </Page>
