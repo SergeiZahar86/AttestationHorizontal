@@ -66,6 +66,9 @@
             </Style.Triggers>
         </Style>
         <!-- ========================== Стили заголовков таблицы ======================= -->
+
+
+
         <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Background" Value="#FF37474F"/>
@@ -75,6 +78,25 @@
             <Setter Property="Height" Value="40"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Margin" Value="1"/>
+
+<!--
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding}">
+                            <TextBlock.LayoutTransform>
+                                <RotateTransform Angle="90" />
+                            </TextBlock.LayoutTransform>
+                        </TextBlock>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+
+-->
+
+
+
+
         </Style>
     </Page.Resources>
 
@@ -109,16 +131,89 @@
         <DataGrid x:Name="DataGridMain" Grid.Row="0" Grid.RowSpan="3" Padding="4" AutoGenerateColumns="False" ItemsSource="{Binding}"
                   VerticalAlignment="Center" HorizontalAlignment="Center" 
                   Width="800" Height="900" Loaded="DataGridMain_Loaded" BorderThickness="2,2,2,2" SelectionMode="Single"
-                  CanUserAddRows="False" AlternatingRowBackground="#3322B222" >
+                  CanUserAddRows="False" AlternatingRowBackground="#3322B222" RenderTransformOrigin="0.5,0.5" >
+
+
+            <DataGrid.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <MatrixTransform Matrix="-1,0,0,1,0,0"/>
+                </TransformGroup>
+            </DataGrid.LayoutTransform>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}"
+                BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <TransformGroup>
+                                <RotateTransform Angle="-90"/>
+                                <ScaleTransform ScaleX="1" ScaleY="-1" />
+                            </TransformGroup>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.CellStyle>
+                <Style  TargetType="DataGridCell">
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <TransformGroup>
+                                <RotateTransform Angle="-90"/>
+                                <ScaleTransform ScaleX="1" ScaleY="-1" />
+                            </TransformGroup>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+
+
+
+
 
             <DataGrid.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
                    Color="#AAFF0000"/>
             </DataGrid.Resources>
-
+            
+            <!--
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+-->
             <!-- ========================== Стиль строки ======================= -->
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
+
+<!--
+
+                    <Setter Property="DetailsTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding}" RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="90"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <RotateTransform Angle="-90" />
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+-->
+
+
+
                     <Setter Property="Background" Value="#EEEEEE" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -186,7 +281,7 @@
                     </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
 
-                <!-- TaraDelta -->
+                <!-- TaraDelta 
                 <DataGridTextColumn x:Name="TaraDelta" Header="▲ Тара,т" Width="80" Binding="{Binding TaraDelta}"
                                     HeaderStyle="{StaticResource CenterGridHeaderStyle}">
                     <DataGridTextColumn.CellStyle>
@@ -195,7 +290,18 @@
                         </Style>
                     </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
-
+                -->
+                <DataGridTemplateColumn x:Name="TaraDelta" Header="▲ Тара,т" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TaraDelta}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                
+                
+                
                 <!-- VideoButton -->
                 <DataGridTemplateColumn x:Name="VideoButton" Header="Фото/видео" HeaderStyle="{StaticResource CenterGridHeaderStyle}">
                     <DataGridTemplateColumn.CellTemplate >
