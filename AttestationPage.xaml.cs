@@ -76,6 +76,7 @@ namespace Attestation
             }
             DataGridMain.ItemsSource = global.DATA;
         }
+        /*
         System.Drawing.Image getImage(String im)
         {
             System.Drawing.Image image = System.Drawing.Image.FromFile(im);
@@ -87,6 +88,7 @@ namespace Attestation
             return imgFromStream;
 
         }
+        */
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             /* 
