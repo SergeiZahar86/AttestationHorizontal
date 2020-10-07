@@ -84,6 +84,7 @@
     <Compile Include="DialogLogin.xaml.cs">
       <DependentUpon>DialogLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RowCar.cs" />
     <Compile Include="RowTab.cs" />
     <Compile Include="ShowPhotos.xaml.cs">
       <DependentUpon>ShowPhotos.xaml</DependentUpon>

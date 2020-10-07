@@ -53,9 +53,9 @@ namespace Attestation
                 topFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-sergio-souza-3197995.jpg");
                 */
 
-                leftFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Projects/АРМ_ОТК/Resources/pexels-mark-plötz-2790396.jpg"));
-                rightFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Projects/АРМ_ОТК/Resources/pexels-pixabay-258455.jpg"));
-                topFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Projects/АРМ_ОТК/Resources/pexels-sergio-souza-3197995.jpg"));
+                leftFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-mark-plötz-2790396.jpg"));
+                rightFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-pixabay-258455.jpg"));
+                topFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-sergio-souza-3197995.jpg"));
 
                 if (i % 2 == 0)
                 {
