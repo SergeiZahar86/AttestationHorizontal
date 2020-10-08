@@ -44,51 +44,16 @@ namespace Attestation
         }
         private void DataGridMain_Loaded(object sender, RoutedEventArgs e)
         {
-            global.DATA.Clear();
-            for(int i=0; i < 26; i++) {
-                bool c = false;
-                /*
-                leftFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-mark-plötz-2790396.jpg");
-                rightFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-pixabay-258455.jpg");
-                topFoto = getImage("C:/Projects/АРМ_ОТК/Resources/pexels-sergio-souza-3197995.jpg");
-                */
-
-                leftFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-mark-plötz-2790396.jpg"));
-                rightFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-pixabay-258455.jpg"));
-                topFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-sergio-souza-3197995.jpg"));
-
-                if (i % 2 == 0)
-                {
-                    c = true;
-                    leftFoto = null;
-                    rightFoto = null;
-                    topFoto = null;
-                }
-                global.DATA.Add(new RowTab(i+1, c, (88345634+i).ToString() ,(float)(i+0.5),
-                    (float)(i + 1.5), (float)(i + 2.5), leftFoto, 
-                    rightFoto, topFoto ));
-
-                /*
-                global.DATA.Add(new RowTab(i + 1, c, (88345634 + i).ToString(), (float)(i + 0.5),
-                    (float)(i + 1.5), (float)(i + 2.5), (System.Drawing.Image)leftFoto,
-                    (System.Drawing.Image)rightFoto, (System.Drawing.Image)topFoto));
-                */
-            }
+            //global.DATA.Clear();
+            DataGridMain.ItemsSource = null;
             DataGridMain.ItemsSource = global.DATA;
         }
-        /*
-        System.Drawing.Image getImage(String im)
+        public void aaaa(object sender, RoutedEventArgs e)
         {
-            System.Drawing.Image image = System.Drawing.Image.FromFile(im);
-            var ms = new MemoryStream();
-            image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            var bytes = ms.ToArray();
-            var imageMemoryStream = new MemoryStream(bytes);
-            System.Drawing.Image imgFromStream = System.Drawing.Image.FromStream(imageMemoryStream);
-            return imgFromStream;
-
+            //global.DATA.Clear();
+            DataGridMain.ItemsSource = null;
+            DataGridMain.ItemsSource = global.DATA;
         }
-        */
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             /* 
@@ -127,9 +92,9 @@ namespace Attestation
                 showPhotos.image2.Source = ByteArraytoBitmap(bytes2);
                 showPhotos.image3.Source = ByteArraytoBitmap(bytes3);
                 */
-                showPhotos.image1.Source = ByteArraytoBitmap(leftFoto);
-                showPhotos.image2.Source = ByteArraytoBitmap(rightFoto);
-                showPhotos.image3.Source = ByteArraytoBitmap(topFoto);
+                showPhotos.image1.Source = ByteArraytoBitmap(row.LeftFoto);
+                showPhotos.image2.Source = ByteArraytoBitmap(row.RightFoto);
+                showPhotos.image3.Source = ByteArraytoBitmap(row.TopFoto);
 
 
                 showPhotos.ShowDialog();
@@ -149,14 +114,7 @@ namespace Attestation
             bitmapImage.EndInit();
             return bitmapImage;
         }
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
-            }
-        }
+        
         private void button_add_Click(object sender, RoutedEventArgs e)
         {
             /*
@@ -169,6 +127,18 @@ namespace Attestation
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Change_VagNum(object sender, RoutedEventArgs e)
+        {
+            ShowChange_VagNum showChange_VagNum = new ShowChange_VagNum();
+            global.Idx = DataGridMain.SelectedIndex;
+            showChange_VagNum.oldVagNum.Content = global.DATA[global.Idx].VagNum;
+
+            //RowTab row1 = global.DATA[global.Idx];
+
+
+            showChange_VagNum.ShowDialog();
         }
     }
 }

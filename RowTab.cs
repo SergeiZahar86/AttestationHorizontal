@@ -10,7 +10,7 @@ namespace Attestation
 {
     public class RowTab
     {
-        public RowTab(int Id, bool isOk, string VagNum, float Tara, float TaraNSI,
+        public RowTab(int Id, string isOk, string VagNum, float Tara, float TaraNSI,
             float TaraDelta, byte[] LeftFoto, byte[] RightFoto, byte[] TopFoto)
 
             /*
@@ -30,7 +30,7 @@ namespace Attestation
             this.TopFoto = TopFoto;
         }
         public int Id { get; set; }
-        public bool isOk { get; set; }
+        public string isOk { get; set; }
         public string VagNum { get; set; }
         public float Tara { get; set; }
         public float TaraNSI { get; set; }
