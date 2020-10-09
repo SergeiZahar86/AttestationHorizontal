@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attestation", "Attestation.csproj", "{CEB0E5DB-183E-4B86-B668-A45D7C507697}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttestationHorizontal", "AttestationHorizontal.csproj", "{CEB0E5DB-183E-4B86-B668-A45D7C507697}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
