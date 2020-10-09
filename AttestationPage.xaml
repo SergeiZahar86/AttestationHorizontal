@@ -200,7 +200,7 @@
                         <DataTemplate >
                             <Button x:Name="Change_isOk" BorderThickness="0" Background="White" Click="Change_isOk">
                                 <Button.Content>
-                                    <fa:ImageAwesome x:Name="Icon" Icon="{Binding isOk}" Margin="5"/>
+                                    <fa:ImageAwesome x:Name="Icon"  Icon="{Binding isOk}" Margin="5"/>
                                 </Button.Content>
                             </Button>
                         </DataTemplate>

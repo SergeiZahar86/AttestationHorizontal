@@ -48,6 +48,8 @@ namespace Attestation
             if(key == ok.Name)
             {
                 global.DATA[global.Idx].isOk = check;
+                //var converter = new System.Windows.Media.BrushConverter();
+                //ok.Foreground = (Brush)converter.ConvertFromString("#38E05D");
             }
             else if(key == nothing.Name)
             {

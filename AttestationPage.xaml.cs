@@ -143,6 +143,7 @@ namespace Attestation
             showChange_IsOk.ShowDialog();
             DataGridMain.ItemsSource = null;
             DataGridMain.ItemsSource = global.DATA;
+            
         }
     }
 }
