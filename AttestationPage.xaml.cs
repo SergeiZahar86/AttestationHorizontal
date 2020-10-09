@@ -135,10 +135,11 @@ namespace Attestation
             global.Idx = DataGridMain.SelectedIndex;
             showChange_VagNum.oldVagNum.Content = global.DATA[global.Idx].VagNum;
 
-            //RowTab row1 = global.DATA[global.Idx];
 
 
             showChange_VagNum.ShowDialog();
+            DataGridMain.ItemsSource = null;
+            DataGridMain.ItemsSource = global.DATA;
         }
     }
 }

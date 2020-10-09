@@ -151,7 +151,8 @@
                   FontFamily="Calibri" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   Width="650" Height="1980" Loaded="DataGridMain_Loaded" BorderThickness="0"
                   SelectionMode="Single" CanUserAddRows="False" AlternatingRowBackground="White"
-                  RenderTransformOrigin="0.5,0.5" BorderBrush="#FFF0F0F0" Background="White" >
+                  RenderTransformOrigin="0.5,0.5" BorderBrush="White" Background="White" 
+                  GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#FFB0B0B0"  >
 
             <DataGrid.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
@@ -160,7 +161,7 @@
             <!-- ========================== Стиль строки ======================= -->
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="#EEEEEE" />
+                    <Setter Property="Background" Value="White" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="Red"/>

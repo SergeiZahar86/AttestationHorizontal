@@ -39,5 +39,6 @@ namespace Attestation
         {
             this.Close();
         }
+        
     }
 }
