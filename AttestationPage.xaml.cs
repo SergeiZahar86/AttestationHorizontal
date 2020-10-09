@@ -39,16 +39,10 @@ namespace Attestation
             //Image1FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap1.bmp";
             //Image2FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap2.bmp";
             //Image3FromRowTab = "C:/Projects/АРМ_ОТК/ImageFromRowTab/Bitmap3.bmp";
-
+            
 
         }
         private void DataGridMain_Loaded(object sender, RoutedEventArgs e)
-        {
-            //global.DATA.Clear();
-            DataGridMain.ItemsSource = null;
-            DataGridMain.ItemsSource = global.DATA;
-        }
-        public void aaaa(object sender, RoutedEventArgs e)
         {
             //global.DATA.Clear();
             DataGridMain.ItemsSource = null;
@@ -138,6 +132,15 @@ namespace Attestation
 
 
             showChange_VagNum.ShowDialog();
+            DataGridMain.ItemsSource = null;
+            DataGridMain.ItemsSource = global.DATA;
+        }
+
+        private void Change_isOk(object sender, RoutedEventArgs e)
+        {
+            ShowChange_isOk showChange_IsOk = new ShowChange_isOk();
+            global.Idx = DataGridMain.SelectedIndex;
+            showChange_IsOk.ShowDialog();
             DataGridMain.ItemsSource = null;
             DataGridMain.ItemsSource = global.DATA;
         }

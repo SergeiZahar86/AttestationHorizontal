@@ -23,14 +23,15 @@ namespace Attestation
         private Global()
         {
             DATA = new List<RowTab>();
-
-
             for (int i = 0; i < 26; i++)
             {
-                string c = "AlignLeft";
+                string c = "Question";
+                //string c = "CheckCircle";
+                //string c = "WindowClose";
                 leftFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-mark-plötz-2790396.jpg"));
                 rightFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-pixabay-258455.jpg"));
                 topFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-sergio-souza-3197995.jpg"));
+                /*
                 if (i % 2 == 0)
                 {
                     c = "LongArrowRight";
@@ -38,14 +39,11 @@ namespace Attestation
                     rightFoto = null;
                     topFoto = null;
                 }
+                */
                 DATA.Add(new RowTab(i + 1, c, (88345634 + i).ToString(), (float)(i + 0.5),
                     (float)(i + 1.5), (float)(i + 2.5), leftFoto,
                     rightFoto, topFoto));
             }
-
-
-
-
         }
         public static Global getInstance()//*******
         {
