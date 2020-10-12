@@ -28,9 +28,9 @@ namespace Attestation
                 string c = "Question";
                 //string c = "CheckCircle";
                 //string c = "WindowClose";
-                leftFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-mark-plötz-2790396.jpg"));
-                rightFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-pixabay-258455.jpg"));
-                topFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/Users/Sergei/Source/Repos/SergeiZahar86/-_-/Resources/pexels-sergio-souza-3197995.jpg"));
+                leftFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/VisualStudioProject/AttestationHorizontal/Resources/pexels-mark-plötz-2790396.jpg"));
+                rightFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/VisualStudioProject/AttestationHorizontal/Resources/pexels-pixabay-258455.jpg"));
+                topFoto = ImageToByteArray(System.Drawing.Image.FromFile("C:/VisualStudioProject/AttestationHorizontal/Resources/pexels-sergio-souza-3197995.jpg"));
                 /*
                 if (i % 2 == 0)
                 {
